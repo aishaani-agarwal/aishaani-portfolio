@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Link from "next/link"; // Correct import for Link
 import Image from "next/image"; // Importing Image from next/image
-import Button from "/Users/aishaaniagarwal/Desktop/aishaani-portfolio 2/src/app/Button.js";
-import "/Users/aishaaniagarwal/Desktop/aishaani-portfolio 2/src/app/globals.css";
+import Button from "../src/app/Button.js";
+import "../src/app/globals.css";
 
 const Internships = () => {
   const [menuOpen, setMenuOpen] = useState(false);
