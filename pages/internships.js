@@ -91,14 +91,14 @@ const Internships = () => {
 
        {/* Horizontal buttons for larger screens */}
        <div className="hidden sm:flex space-x-2 sm:space-x-4">
-         <a href="/internships"><Button>INTERNSHIPS</Button></a>
-         <a href="/project"><Button>PROJECTS</Button></a>
-         <a href="/extracurricular"><Button>EXTRACURRICULARS</Button></a>
-         <a href="/awards"><Button>AWARDS</Button></a>
-         <a href="/studentcouncil"><Button>STUDENT-COUNCIL</Button></a>
-         <a href="/studentcouncil"><Button>RESEARCH</Button></a>
-         <a href="/studentcouncil"><Button>COURSES</Button></a>
-         <a href="/studentcouncil"><Button>SUMMER PROGRAM</Button></a>
+          <Link href="/internships"><Button>INTERNSHIPS</Button></Link>
+          <Link href="/project"><Button>PROJECTS</Button></Link>
+          <Link href="/extracurricular"><Button>EXTRACURRICULARS</Button></Link>
+          <Link href="/awards"><Button>AWARDS</Button></Link>
+          <Link href="/studentcouncil"><Button>STUDENT-COUNCIL</Button></Link>
+          <Link href="/studentcouncil"><Button>RESEARCH</Button></Link>
+          <Link href="/studentcouncil"><Button>COURSES</Button></Link>
+          <Link href="/studentcouncil"><Button>SUMMER PROGRAM</Button></Link> 
          
        </div>
       </div>
