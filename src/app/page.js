@@ -198,7 +198,6 @@ export default function Home() {
             linkedin.com/in/aishaani-agarwal
           </a>
         </p>
-        <p>testest</p>
       </div>
     </footer>
     
