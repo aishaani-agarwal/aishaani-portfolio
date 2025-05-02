@@ -4,7 +4,7 @@ import Image from "next/image"; // Importing Image from next/image
 import Button from "../src/app/Button.js";
 import "../src/app/globals.css";
 
-const studentcouncil = () => {
+const StudentCouncil = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -188,4 +188,4 @@ const studentcouncil = () => {
   );
 };
 
-export default studentcouncil;
+export default StudentCouncil;
