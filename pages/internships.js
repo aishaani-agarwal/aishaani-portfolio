@@ -29,7 +29,9 @@ const Internships = () => {
       <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
         ⎯⎯⎯⎯⎯
       </h1>
+      <br></br>
       {/* First Blog Section */}
+      <h1 className="font-serif font-bold text-center text-2xl sm:text-3xl md:text-4xl my-8">TRADEMO</h1>
       <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
         <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
           {/* Image */}
@@ -44,18 +46,40 @@ const Internships = () => {
           {/* Text Content */}
           <p className="font-serif text-xl text-left max-w-prose leading-loose ... tracking-wide">
             As an intern at Trademo, a Global Supply Chain Intelligence
-            <br />
             company, I worked as a front-end developer. I honed my skills
-            <br />
             in JavaScript and CSS, creating responsive user interfaces. I
-            improved
-            <br />
-            my communication and teamwork, explored VSCode features, and <br />
+            improved my communication and teamwork, explored VSCode features, and 
             gained project management insights. This experience solidified my
-            <br />
-            front-end development foundation and equipped me for success in a{" "}
-            <br />
+            front-end development foundation and equipped me for success in a
             tech environment.
+          </p>
+        </div>
+      </div>
+
+      <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
+        <br />
+        ⎯⎯⎯⎯⎯
+      </h1>
+
+      {/* First Blog Section */}<br></br>
+      <h1 className="font-serif font-bold text-center text-2xl sm:text-3xl md:text-4xl my-8">NISARG FOUNDATION</h1>
+      <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
+        <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
+          {/* Image */}
+          <Image
+            src="/image/nisarg.jpg"
+            alt="Nisarg Image"
+            width={250}
+            height={250}
+          />
+        </div>
+        <div className="w-full md:w-2/3 lg:w-1/2">
+          {/* Text Content */}
+          <p className="font-serif text-xl text-left max-w-prose leading-loose ... tracking-wide">
+           At Nisarg Foundation I created a comprehensive computer literacy 
+           curriculum for underprivileged children, developing lesson plans 
+           and presentations. Taught classes covering basics to advanced topics, helping 
+           students gain practical tech skills and confidence.
           </p>
         </div>
       </div>
@@ -78,9 +102,7 @@ const Internships = () => {
           {menuOpen && (
              <div className="fixed inset-0 bg-black flex flex-col items-center justify-center space-y-4 z-20">
              <Button href="/pages/internships" onClick={toggleMenu}>INTERNSHIPS</Button>
-             <Button onClick={toggleMenu}>PROJECTS</Button>
              <Button onClick={toggleMenu}>EXTRACURRICULARS</Button>
-             <Button onClick={toggleMenu}>AWARDS</Button>
              <Button onClick={toggleMenu}>STUDENT COUNCIL</Button>
              <Button onClick={toggleMenu}>RESEARCH</Button>
              <Button onClick={toggleMenu}>COURSES</Button>
@@ -92,13 +114,11 @@ const Internships = () => {
        {/* Horizontal buttons for larger screens */}
        <div className="hidden sm:flex space-x-2 sm:space-x-4">
           <Link href="/internships"><Button>INTERNSHIPS</Button></Link>
-          <Link href="/project"><Button>PROJECTS</Button></Link>
           <Link href="/extracurricular"><Button>EXTRACURRICULARS</Button></Link>
-          <Link href="/awards"><Button>AWARDS</Button></Link>
           <Link href="/studentcouncil"><Button>STUDENT-COUNCIL</Button></Link>
-          <Link href="/studentcouncil"><Button>RESEARCH</Button></Link>
+          <Link href="/research"><Button>RESEARCH</Button></Link>
           <Link href="/studentcouncil"><Button>COURSES</Button></Link>
-          <Link href="/studentcouncil"><Button>SUMMER PROGRAM</Button></Link> 
+          <Link href="/summerprogram"><Button>SUMMER PROGRAM</Button></Link> 
          
        </div>
       </div>

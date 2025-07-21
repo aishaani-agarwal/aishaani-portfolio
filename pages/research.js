@@ -24,7 +24,7 @@ const Project = () => {
 
         {/* Blog Heading */}
         <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
-          PROJECTS
+          RESEARCH PAPER
         </h1>
         <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
           ⎯⎯⎯⎯⎯
@@ -33,33 +33,18 @@ const Project = () => {
         <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
           <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
             {/* Image */}
-            <Image
-              src="/image/cfa.jpg"
-              alt="Trademo Image"
-              width={450}
-              height={450}
-            />
+           
           </div>
           <div className="w-full md:w-2/5 lg:w-1/2">
             {/* Text Content */}
             <h1 className="font-Barlow font-extrabold text-2xl text-left max-w-prose leading-loose tracking-wide">
-              CareForALL
+              Investigating Awareness and Perception of Bias in AI-Driven Platforms: A Survey-Based Study
             </h1>
-            <h2 className="font-Barlow font-extrabold text-xl text-left max-w-prose leading-loose tracking-wide">
-              - Director and Head of Social Media
-            </h2>
 
             <br />
 
             <p className="font-Barlow text-xl text-left max-w-prose leading-loose ... tracking-wide">
-              I started as a Volunteer at CareForALL Organization and advanced
-              to the position of director and head of Social Marketing. I
-              specialize in creating engaging social media content, editing
-              videos, and managing social media platforms. I transitioned from
-              content creation to leading a team in video editing, demonstrating
-              strong leadership skills. Additionally, I am proficient in
-              overseeing website design and implementing effective marketing
-              strategies.
+              
             </p>
           </div>
         </div>
@@ -68,49 +53,6 @@ const Project = () => {
           <br />
           ⎯⎯⎯⎯⎯
         </h1>
-
-{/* First Blog Section */}
-<div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
-          <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
-            {/* Image */}
-            <Image
-              src="/image/Unbound.jpg"
-              alt="Trademo Image"
-              width={350}
-              height={350}
-            />
-          </div>
-          <div className="w-full md:w-2/5 lg:w-1/2">
-            {/* Text Content */}
-            <h1 className="font-Barlow font-extrabold text-2xl text-left max-w-prose leading-loose tracking-wide">
-              Unbound
-            </h1>
-            <h2 className="font-Barlow font-extrabold text-xl text-left max-w-prose leading-loose tracking-wide">
-              - Developer
-            </h2>
-
-            <br />
-
-            <p className="font-Barlow text-xl text-left max-w-prose leading-loose ... tracking-wide">
-            The invisible barrier that comes at every turn for workers without a 
-            bachelor’s degree Millions of workers with in-demand skills and experience, 
-            overlooked for higher-wage jobs because they don’t have a bachelor’s degree. 
-            This all stops now, Unbound helps these workers figure out their true passion and 
-            forces them to be limitless and pursue any job they want. Tear the paper ceiling 
-            today! Unbound is a webapp I developed from scratch with a fully functional 
-            databse which allows underprivileged people to explore their future careers
-             after filling out a quick survey based on a very practical and simple 
-             algorithm created by me.
-            </p>
-          </div>
-        </div>
-
-        <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
-          <br />
-          ⎯⎯⎯⎯⎯
-        </h1>
-
-
 
         {/* Menu Buttons */}
         <div className="absolute top-4 right-4 space-x-2 sm:space-x-4">
@@ -125,9 +67,7 @@ const Project = () => {
             {menuOpen && (
               <div className="fixed inset-0 bg-black flex flex-col items-center justify-center space-y-4 z-20">
                   <Button href="/pages/internships" onClick={toggleMenu}>INTERNSHIPS</Button>
-                  <Button onClick={toggleMenu}>PROJECTS</Button>
                   <Button onClick={toggleMenu}>EXTRACURRICULARS</Button>
-                  <Button onClick={toggleMenu}>AWARDS</Button>
                   <Button onClick={toggleMenu}>STUDENT COUNCIL</Button>
                   <Button onClick={toggleMenu}>RESEARCH</Button>
                   <Button onClick={toggleMenu}>COURSES</Button>
@@ -139,13 +79,11 @@ const Project = () => {
             {/* Horizontal buttons for larger screens */}
             <div className="hidden sm:flex space-x-2 sm:space-x-4">
               <Link href="/internships"><Button>INTERNSHIPS</Button></Link>
-              <Link href="/project"><Button>PROJECTS</Button></Link>
               <Link href="/extracurricular"><Button>EXTRACURRICULARS</Button></Link>
-              <Link href="/awards"><Button>AWARDS</Button></Link>
               <Link href="/studentcouncil"><Button>STUDENT-COUNCIL</Button></Link>
-              <Link href="/studentcouncil"><Button>RESEARCH</Button></Link>
-              <Link href="/studentcouncil"><Button>COURSES</Button></Link>
-              <Link href="/studentcouncil"><Button>SUMMER PROGRAM</Button></Link>
+              <Link href="/research"><Button>RESEARCH</Button></Link>
+              <Link href="/courses"><Button>COURSES</Button></Link>
+              <Link href="/summerprogram"><Button>SUMMER PROGRAM</Button></Link>
               
             </div>
         </div>

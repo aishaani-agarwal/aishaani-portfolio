@@ -61,9 +61,7 @@ export default function Home() {
               {menuOpen && (
                 <div className="fixed inset-0 bg-black flex flex-col items-center justify-center space-y-4 z-20">
                   <Button href="/pages/internships" onClick={toggleMenu}>INTERNSHIPS</Button>
-                  <Button onClick={toggleMenu}>PROJECTS</Button>
                   <Button onClick={toggleMenu}>EXTRACURRICULARS</Button>
-                  <Button onClick={toggleMenu}>AWARDS</Button>
                   <Button onClick={toggleMenu}>STUDENT COUNCIL</Button>
                   <Button onClick={toggleMenu}>RESEARCH</Button>
                   <Button onClick={toggleMenu}>COURSES</Button>
@@ -75,9 +73,7 @@ export default function Home() {
             {/* Horizontal buttons for larger screens */}
             <div className="hidden sm:flex space-x-2 sm:space-x-4">
               <Link href="/internships"><Button>INTERNSHIPS</Button></Link>
-              <Link href="/project"><Button>PROJECTS</Button></Link>
               <Link href="/extracurricular"><Button>EXTRACURRICULARS</Button></Link>
-              <Link href="/awards"><Button>AWARDS</Button></Link>
               <Link href="/studentcouncil"><Button>STUDENT-COUNCIL</Button></Link>
               <Link href="/studentcouncil"><Button>RESEARCH</Button></Link>
               <Link href="/studentcouncil"><Button>COURSES</Button></Link>

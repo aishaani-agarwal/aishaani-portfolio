@@ -24,12 +24,11 @@ const Project = () => {
 
         {/* Blog Heading */}
         <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
-          PROJECTS
+          EXTRACURRICULARS
         </h1>
         <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
           ⎯⎯⎯⎯⎯
         </h1>
-        {/* First Blog Section */}
         <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
           <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
             {/* Image */}
@@ -101,6 +100,7 @@ const Project = () => {
             databse which allows underprivileged people to explore their future careers
              after filling out a quick survey based on a very practical and simple 
              algorithm created by me.
+             unboundonline.in
             </p>
           </div>
         </div>
@@ -109,7 +109,139 @@ const Project = () => {
           <br />
           ⎯⎯⎯⎯⎯
         </h1>
+        <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
+          <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
+            {/* Image */}
+            <Image
+              src="/image/TH.jpg"
+              alt="track honest Image"
+              width={350}
+              height={350}
+            />
+          </div>
+          <div className="w-full md:w-2/5 lg:w-1/2">
+            {/* Text Content */}
+            <h1 className="font-Barlow font-extrabold text-2xl text-left max-w-prose leading-loose tracking-wide">
+              Trackhonest
+            </h1>
+            <h2 className="font-Barlow font-extrabold text-xl text-left max-w-prose leading-loose tracking-wide">
+              - Developer
+            </h2>
 
+            <br />
+
+            <p className="font-Barlow text-xl text-left max-w-prose leading-loose ... tracking-wide">
+            Track Honest is a self-engineered wellness web
+             application architected from scratch using core web 
+             technologies—HTML5, CSS3, and JavaScript—with a focus on 
+             intuitive UX, minimal friction, and real-time behavior tracking. Unlike 
+             conventional diet apps that rely on static meal plans or rigid algorithms, Track 
+             Honest leverages a lightweight, event-driven architecture that adapts dynamically 
+             to user input and daily fluctuations, making it ultra-flexible and deeply personal. 
+             It introduces a behavioral reward system that gamifies self-control—logging moments 
+             of resistance as forward progress, not just calories—and redefines what it means 
+             to “eat healthy” in a way that is both empathetic and sustainable. 
+             trackhonest.com
+            </p>
+          </div>
+        </div>
+
+        <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
+          <br />
+          ⎯⎯⎯⎯⎯
+        </h1>
+        <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
+          <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
+            {/* Image */}
+            <Image
+              src="/image/ptp.jpg"
+              alt="plastic to paper Image"
+              width={350}
+              height={350}
+            />
+          </div>
+          <div className="w-full md:w-2/5 lg:w-1/2">
+            {/* Text Content */}
+            <h1 className="font-Barlow font-extrabold text-2xl text-left max-w-prose leading-loose tracking-wide">
+              Plastic to Paper
+            </h1>
+            <br />
+
+            <p className="font-Barlow text-xl text-left max-w-prose leading-loose ... tracking-wide">
+            I organized a community initiative aimed at promoting eco-friendly
+             practices by collecting paper bags from residents and engaging 
+             with local street vendors who still relied on plastic bags. 
+             Facilitating the exchange of plastic for paper required strategic
+              coordination and outreach efforts. Ensuring the proper disposal 
+              of the collected plastic bags through a dedicated recycling company
+               underscored our commitment to environmental stewardship and sustainability.
+            </p>
+          </div>
+        </div>
+
+        <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
+          <br />
+          ⎯⎯⎯⎯⎯
+        </h1>
+        <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
+          <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
+            {/* Image */}
+            <Image
+              src="/image/trinity.jpg"
+              alt="trinity Image"
+              width={350}
+              height={350}
+            />
+          </div>
+          <div className="w-full md:w-2/5 lg:w-1/2">
+            {/* Text Content */}
+            <h1 className="font-Barlow font-extrabold text-2xl text-left max-w-prose leading-loose tracking-wide">
+              Trinity
+            </h1>
+            <br />
+            <p className="font-Barlow text-xl text-left max-w-prose leading-loose ... tracking-wide">
+            Attain distinction in acting trinity exam!
+            </p>
+          </div>
+        </div>
+
+        <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
+          <br />
+          ⎯⎯⎯⎯⎯
+        </h1>
+        <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
+          <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
+            {/* Image */}
+            <Image
+              src="/image/mv.mp4"
+              alt="film video"
+              width={350}
+              height={350}
+            />
+          </div>
+          <div className="w-full md:w-2/5 lg:w-1/2">
+            {/* Text Content */}
+            <h1 className="font-Barlow font-extrabold text-2xl text-left max-w-prose leading-loose tracking-wide">
+              Film Making Competition  
+            </h1>
+            <br />
+
+            <p className="font-Barlow text-xl text-left max-w-prose leading-loose ... tracking-wide">
+            I won first place in a film competition where I had 
+            to create a video presenting my personal and professional 
+            background in innovative ways. Through this project, I explored 
+            different camera angles, various shooting techniques, and advanced 
+            editing methods. This experience allowed me to refine my skills in visual 
+            storytelling and video production, showcasing my ability to produce
+             high-quality, engaging content.
+            </p>
+          </div>
+        </div>
+
+        <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
+          <br />
+          ⎯⎯⎯⎯⎯
+        </h1>
 
 
         {/* Menu Buttons */}
@@ -125,9 +257,7 @@ const Project = () => {
             {menuOpen && (
               <div className="fixed inset-0 bg-black flex flex-col items-center justify-center space-y-4 z-20">
                   <Button href="/pages/internships" onClick={toggleMenu}>INTERNSHIPS</Button>
-                  <Button onClick={toggleMenu}>PROJECTS</Button>
                   <Button onClick={toggleMenu}>EXTRACURRICULARS</Button>
-                  <Button onClick={toggleMenu}>AWARDS</Button>
                   <Button onClick={toggleMenu}>STUDENT COUNCIL</Button>
                   <Button onClick={toggleMenu}>RESEARCH</Button>
                   <Button onClick={toggleMenu}>COURSES</Button>
@@ -139,13 +269,11 @@ const Project = () => {
             {/* Horizontal buttons for larger screens */}
             <div className="hidden sm:flex space-x-2 sm:space-x-4">
               <Link href="/internships"><Button>INTERNSHIPS</Button></Link>
-              <Link href="/project"><Button>PROJECTS</Button></Link>
               <Link href="/extracurricular"><Button>EXTRACURRICULARS</Button></Link>
-              <Link href="/awards"><Button>AWARDS</Button></Link>
               <Link href="/studentcouncil"><Button>STUDENT-COUNCIL</Button></Link>
-              <Link href="/studentcouncil"><Button>RESEARCH</Button></Link>
-              <Link href="/studentcouncil"><Button>COURSES</Button></Link>
-              <Link href="/studentcouncil"><Button>SUMMER PROGRAM</Button></Link>
+              <Link href="/research"><Button>RESEARCH</Button></Link>
+              <Link href="/courses"><Button>COURSES</Button></Link>
+              <Link href="/summerprogram"><Button>SUMMER PROGRAM</Button></Link>
               
             </div>
         </div>
