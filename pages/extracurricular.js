@@ -212,12 +212,12 @@ const Project = () => {
         <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
           <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
             {/* Image */}
-            <Image
+            {/* <Image
               src="/image/mv.mp4"
               alt="film video"
               width={350}
               height={350}
-            />
+            /> */}
           </div>
           <div className="w-full md:w-2/5 lg:w-1/2">
             {/* Text Content */}
