@@ -279,6 +279,36 @@ const Project = () => {
           <br />
           ⎯⎯⎯⎯⎯
         </h1>
+              
+      <div className="flex flex-wrap items-center justify-center mb-8 container mt-16 px-24">
+          <div className="w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
+            {/* Image */}
+            <Image
+              src="/image/invictus.jpg"
+              alt="invictus Image"
+              width={350}
+              height={350}
+            />
+          </div>
+          <div className="w-full md:w-2/5 lg:w-1/2">
+            {/* Text Content */}
+            <h1 className="font-Barlow font-extrabold text-2xl text-left max-w-prose leading-loose tracking-wide">
+              Trinity
+            </h1>
+            <br />
+            <p className="font-Barlow text-xl text-left max-w-prose leading-loose ... tracking-wide">
+            Attain distinction in acting trinity exam!
+            </p>
+          </div>
+        </div>
+
+        <h1 className="font-serif font-bold text-center text-2xl sm:text-5xl md:text-6xl my-8">
+          <br />
+          ⎯⎯⎯⎯⎯
+        </h1>
+
+
+        
 
 
         {/* Menu Buttons */}
