@@ -293,11 +293,16 @@ const Project = () => {
           <div className="w-full md:w-2/5 lg:w-1/2">
             {/* Text Content */}
             <h1 className="font-Barlow font-extrabold text-2xl text-left max-w-prose leading-loose tracking-wide">
-              Trinity
+              Invictus
             </h1>
             <br />
             <p className="font-Barlow text-xl text-left max-w-prose leading-loose ... tracking-wide">
-            Attain distinction in acting trinity exam!
+            Won 1st place at Invictus in “Code Capture,” an interschool 
+            event combining coding puzzles, logic challenges, and a fast-paced 
+            digital treasure hunt. Competed in deciphering clues using tools 
+            like Hashcat, Vigenère and Caesar ciphers, and advanced terminal commands 
+            with pipelines. The competition tested speed, accuracy, adaptability, and 
+            teamwork, simulating real-world problem-solving under pressure.
             </p>
           </div>
         </div>
