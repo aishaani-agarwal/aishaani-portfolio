@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>aishaani agarwal</title>
+<meta name="description" content="Aishaani Agarwal — CS @ UW–Madison, class of 2030." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Archivo:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E0E10;
+    --bg-2:#131316;
+    --line:#232327;
+    --line-2:#2E2E33;
+    --ink:#E8E8E6;
+    --dim:#8A8A90;
+    --ghost:#4A4A50;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Archivo',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --edge:clamp(20px,6vw,90px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-weight:300;line-height:1.65;
+    overflow-x:hidden;-webkit-font-smoothing:antialiased;
+    cursor:none;
+  }
+  body.locked{overflow:hidden}
+  a,button{cursor:none}
+  @media(hover:none){body,a,button{cursor:auto}}
+  ::selection{background:var(--ink);color:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  img{display:block}
+
+  /* ================= TERMINAL INTRO ================= */
+  #intro{
+    position:fixed;inset:0;z-index:200;background:#0A0A0C;
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .9s cubic-bezier(.76,0,.24,1);
+  }
+  #intro.away{transform:translateY(-100%)}
+  .term{
+    width:min(680px,92vw);
+    border:1px solid var(--line-2);border-radius:10px;
+    background:#0C0C0F;
+    box-shadow:0 40px 120px -30px rgba(0,0,0,.9);
+    overflow:hidden;
+  }
+  #intro.compiling .term{animation:shake .35s linear}
+  @keyframes shake{
+    0%,100%{transform:translate(0,0)}20%{transform:translate(-2px,1px)}40%{transform:translate(2px,-1px)}
+    60%{transform:translate(-1px,-1px)}80%{transform:translate(1px,1px)}
+  }
+  .term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:#101014}
+  .term-bar .o{width:10px;height:10px;border-radius:50%;border:1px solid var(--line-2)}
+  .term-bar .title{margin:0 auto;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--ghost);text-transform:uppercase}
+  .term-body{padding:26px 26px 30px;min-height:320px;font-family:var(--mono);font-size:.8rem;line-height:1.9;color:var(--dim)}
+  .term-body .ln{display:block;white-space:pre-wrap;word-break:break-word}
+  .term-body .ok{color:#B9B9BE}
+  .term-body .ghost{color:var(--ghost)}
+  .term-body .name-out{
+    font-family:var(--serif);font-size:clamp(2rem,7vw,3.4rem);
+    color:var(--ink);line-height:1.2;letter-spacing:-.01em;padding:10px 0 6px;display:block;
+  }
+  .term-body .name-out em{font-style:italic;color:var(--dim)}
+  .caret{display:inline-block;width:9px;height:1.05em;background:var(--ink);vertical-align:text-bottom;animation:blink 1s steps(1) infinite;margin-left:2px}
+  @keyframes blink{50%{opacity:0}}
+  .press{margin-top:18px;font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ghost);opacity:0;transition:opacity .6s}
+  .press.show{opacity:1;animation:pressPulse 2s ease-in-out infinite}
+  @keyframes pressPulse{50%{color:var(--ink)}}
+  .skip{position:absolute;bottom:26px;right:30px;font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ghost);background:none;border:none;padding:6px 2px;border-bottom:1px solid transparent}
+  .skip:hover{color:var(--dim);border-color:var(--ghost)}
+
+  /* ---- grain ---- */
+  .grain{position:fixed;inset:-100%;z-index:150;pointer-events:none;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 8s steps(10) infinite}
+  @keyframes grain{
+    0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-8%)}20%{transform:translate(-12%,3%)}
+    30%{transform:translate(6%,-10%)}40%{transform:translate(-4%,12%)}50%{transform:translate(-10%,4%)}
+    60%{transform:translate(10%,0)}70%{transform:translate(0,10%)}80%{transform:translate(-12%,0)}90%{transform:translate(8%,4%)}
+  }
+
+  /* ---- cursor (neutral now) ---- */
+  .cur{position:fixed;z-index:300;left:0;top:0;pointer-events:none;transform:translate(-50%,-50%)}
+  .cur .d{width:9px;height:9px;border-radius:50%;background:var(--ink);transition:transform .18s}
+  .cur.on .d{transform:scale(2.1)}
+  @media(hover:none){.cur{display:none}}
+
+  .mono{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+
+  /* ---- nav ---- */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px var(--edge);mix-blend-mode:difference}
+  .logo{font-family:var(--serif);font-size:1.15rem;letter-spacing:.01em;white-space:nowrap}
+  .logo em{font-style:italic;color:var(--dim)}
+  nav{display:flex;gap:26px}
+  nav a{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);position:relative;padding-bottom:3px}
+  nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .3s}
+  nav a:hover::after{transform:scaleX(1);transform-origin:left}
+  @media(max-width:820px){nav{display:none}}
+
+  /* ---- hero ---- */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:0 var(--edge);position:relative}
+  .hero .hello{margin-bottom:18px;opacity:0}
+  .hero h1{
+    font-family:var(--serif);font-weight:340;
+    font-size:clamp(3.2rem,12.5vw,11rem);
+    line-height:1.06;letter-spacing:-.02em;
+    font-variation-settings:"opsz" 100;
+  }
+  /* padding inside the clip so ascenders/descenders never crop */
+  .hero h1 .row{display:block;overflow:hidden;padding:.06em .05em .1em 0;margin:-.03em 0}
+  .hero h1 .row span{display:inline-block;transform:translateY(115%)}
+  .hero h1 em{font-style:italic;color:var(--dim)}
+  .hero-sub{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin-top:36px;border-top:1px solid var(--line);padding-top:22px;opacity:0}
+  .hero-sub p{max-width:460px;color:var(--dim);font-size:1rem}
+  .hero-sub p b{color:var(--ink);font-weight:500}
+  body.entered .hero .hello{animation:fade .8s .5s forwards}
+  body.entered .hero h1 .row span{animation:rise 1s cubic-bezier(.2,.8,.2,1) .35s forwards}
+  body.entered .hero h1 .row:nth-child(2) span{animation-delay:.5s}
+  body.entered .hero-sub{animation:fade 1s .95s forwards}
+  @keyframes rise{to{transform:none}}
+  @keyframes fade{to{opacity:1}}
+  .hero .down{position:absolute;bottom:5vh;left:var(--edge);opacity:0}
+  body.entered .hero .down{animation:fade 1s 1.3s forwards}
+
+  /* ---- marquee ---- */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:13px 0}
+  .marquee .track{display:flex;width:max-content;animation:scroll 30s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  .marquee span{font-family:var(--mono);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ghost);padding:0 26px;white-space:nowrap}
+  .marquee span i{font-style:normal;color:var(--dim);padding-right:26px}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---- sections ---- */
+  section{padding:clamp(80px,13vh,150px) var(--edge)}
+  .shead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:56px}
+  .shead h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:-.01em}
+  .shead h2 em{font-style:italic;color:var(--dim)}
+
+  /* ---- logo chip (img with initials fallback) ---- */
+  .chip-logo{
+    width:44px;height:44px;border-radius:9px;border:1px solid var(--line-2);
+    background:#F0EFEC;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;flex:none;
+  }
+  .chip-logo img{width:100%;height:100%;object-fit:contain;padding:5px;filter:grayscale(1) contrast(1.05);opacity:.92;transition:filter .3s,opacity .3s}
+  .chip-logo .init{color:#55555A}
+  /* media inside expanded project rows */
+  .row-p .media{display:flex;flex-wrap:wrap;gap:14px;margin:2px 0 18px}
+  .row-p .media img,.row-p .media video{width:min(320px,100%);border-radius:8px;border:1px solid var(--line-2);background:var(--bg-2)}
+  .xp-cell:hover .chip-logo img,.row-p:hover .chip-logo img{filter:grayscale(0);opacity:1}
+  .chip-logo .init{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;color:var(--dim)}
+
+  /* ---- work index ---- */
+  .index{border-top:1px solid var(--line)}
+  .row-p{
+    display:grid;grid-template-columns:64px 1.3fr 1fr auto;gap:20px;align-items:center;
+    padding:26px 8px;border-bottom:1px solid var(--line);position:relative;
+    transition:padding .35s cubic-bezier(.2,.8,.2,1),background .35s;
+  }
+  .row-p:hover{padding-left:26px;background:var(--bg-2)}
+  .row-p .no{font-family:var(--mono);font-size:.66rem;color:var(--ghost);letter-spacing:.1em}
+  .row-p .titlebox{display:flex;align-items:center;gap:16px}
+  .row-p h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.35rem,3vw,2rem);letter-spacing:-.01em;transition:transform .35s}
+  .row-p:hover h3{transform:translateX(6px)}
+  .row-p h3 em{font-style:italic;font-size:.62em;color:var(--dim);margin-left:10px;letter-spacing:.02em}
+  .row-p .what{color:var(--dim);font-size:.9rem;font-weight:300}
+  .row-p .go{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--ghost);transition:color .3s;justify-self:end}
+  .row-p:hover .go{color:var(--ink)}
+  .row-p .more{
+    grid-column:2/5;max-height:0;overflow:hidden;
+    transition:max-height .55s cubic-bezier(.2,.8,.2,1),margin .55s;
+  }
+  .row-p.open .more{max-height:900px;margin-top:16px}
+  .row-p .role{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+  .row-p .more p{color:var(--dim);font-size:.93rem;max-width:680px;margin-bottom:12px}
+  .row-p .more ul{list-style:none;max-width:680px;margin-bottom:16px}
+  .row-p .more li{color:var(--dim);font-size:.9rem;padding:5px 0 5px 20px;position:relative}
+  .row-p .more li::before{content:"—";position:absolute;left:0;color:var(--ghost)}
+  .row-p .more li b{color:var(--ink);font-weight:500}
+  .row-p .stack{display:flex;flex-wrap:wrap;gap:8px}
+  .row-p .stack span{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:var(--dim);border:1px solid var(--line-2);padding:4px 10px;border-radius:20px}
+  @media(max-width:780px){
+    .row-p{grid-template-columns:40px 1fr auto}
+    .row-p .what{display:none}
+    .row-p .more{grid-column:1/4}
+  }
+
+  /* ---- experience ---- */
+  .xp{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .xp-cell{background:var(--bg);padding:34px 30px;transition:background .3s}
+  .xp-cell:hover{background:var(--bg-2)}
+  .xp-cell .top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px}
+  .xp-cell h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:2px}
+  .xp-cell .org{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+  .xp-cell p{color:var(--dim);font-size:.92rem}
+
+  /* ---- awards & research ---- */
+  .aw{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(max-width:820px){.aw{grid-template-columns:1fr}}
+  .aw-cell{background:var(--bg);padding:40px 36px;transition:background .3s;display:flex;flex-direction:column}
+  .aw-cell:hover{background:var(--bg-2)}
+  .aw-cell .mono{display:block;margin-bottom:20px}
+  .aw-cell h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin-bottom:16px;letter-spacing:-.01em}
+  .aw-cell h3 em{font-style:italic;color:var(--dim)}
+  .aw-cell p{color:var(--dim);font-size:.95rem;max-width:520px}
+  .aw-cell .paper-link{
+    margin-top:auto;padding-top:26px;align-self:flex-start;
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:5px;transition:border-color .3s;
+  }
+  .aw-cell .paper-link:hover{border-color:var(--ink)}
+  .aw-cell .cite{font-family:var(--mono);font-size:.62rem;color:var(--ghost);letter-spacing:.04em;margin-top:14px;line-height:1.8}
+
+  /* ---- about ---- */
+  .about{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:start}
+  @media(max-width:860px){.about{grid-template-columns:1fr;gap:44px}}
+  .about-big{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3.6vw,2.5rem);line-height:1.3;letter-spacing:-.01em}
+  .about-big em{font-style:italic;color:var(--dim)}
+  .about p.body{color:var(--dim);margin-top:26px;font-size:1rem;max-width:560px}
+  .uw-row{display:flex;align-items:center;gap:18px;margin-top:34px;border:1px solid var(--line);border-radius:12px;padding:18px 22px;background:var(--bg-2);max-width:460px}
+  .uw-row .chip-logo{width:52px;height:52px}
+  .uw-row .txt b{display:block;font-weight:500;font-size:1rem}
+  .uw-row .txt span{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .facts{display:flex;flex-direction:column}
+  .fact{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding:16px 4px;font-size:.92rem}
+  .fact:first-child{border-top:1px solid var(--line)}
+  .fact .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost);padding-top:4px}
+  .fact .v{text-align:right;color:var(--ink);font-weight:400;max-width:60%}
+  .fact .v i{font-style:normal;color:var(--dim)}
+
+  /* ---- contact ---- */
+  .contact{text-align:center;border-top:1px solid var(--line)}
+  .contact .mono{display:block;margin-bottom:26px}
+  .contact h2{font-family:var(--serif);font-weight:340;font-size:clamp(1.7rem,6.5vw,5rem);letter-spacing:-.02em;line-height:1.15;word-break:break-word}
+  .contact h2 a{position:relative;display:inline-block;padding-bottom:.08em}
+  .contact h2 a em{font-style:italic}
+  .contact h2 a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--ink);transform:scaleX(0);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  .contact h2 a:hover::after{transform:scaleX(1)}
+  .clinks{display:flex;gap:30px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+  .clinks a{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid transparent;padding-bottom:4px;transition:color .3s,border-color .3s}
+  .clinks a:hover{color:var(--ink);border-color:var(--ink)}
+  footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:26px var(--edge);border-top:1px solid var(--line)}
+  footer span{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ghost)}
+
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  /* ---- lightbox ---- */
+  .lightbox{
+    position:fixed;inset:0;z-index:400;background:rgba(8,8,10,.92);
+    display:flex;align-items:center;justify-content:center;padding:5vw;
+    opacity:0;pointer-events:none;transition:opacity .3s;
+  }
+  .lightbox.show{opacity:1;pointer-events:auto}
+  .lightbox img{
+    max-width:min(860px,100%);max-height:86vh;border-radius:10px;
+    border:1px solid var(--line-2);box-shadow:0 40px 120px -30px rgba(0,0,0,.9);
+    transform:scale(.96);transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .lightbox.show img{transform:scale(1)}
+  .lightbox .lb-close{
+    position:absolute;top:24px;right:30px;background:none;border:none;
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--dim);padding:8px;
+  }
+  .lightbox .lb-close:hover{color:var(--ink)}
+  .lightbox .lb-hint{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ghost);
+  }
+
+  /* ---- portrait in about ---- */
+  .portrait{
+    width:min(220px,60%);border-radius:14px;border:1px solid var(--line-2);
+    filter:grayscale(1) contrast(1.02);transition:filter .4s;
+    margin-bottom:28px;
+  }
+  .portrait:hover{filter:grayscale(0)}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    #intro{display:none}
+    .hero .hello,.hero-sub,.hero .down{opacity:1}
+    .hero h1 .row span{transform:none}
+    .rv{opacity:1;transform:none}
+    .grain{display:none}
+    body,a,button{cursor:auto}.cur{display:none}
+    body.locked{overflow:auto}
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- ============ TERMINAL INTRO ============ -->
+<div id="intro">
+  <div class="term">
+    <div class="term-bar">
+      <span class="o"></span><span class="o"></span><span class="o"></span>
+      <span class="title">aishaani.in — zsh</span>
+    </div>
+    <div class="term-body" id="tbody"></div>
+  </div>
+  <button class="skip" id="skip">skip →</button>
+</div>
+
+<div class="grain"></div>
+<div class="cur"><div class="d"></div></div>
+
+<header>
+  <a class="logo" href="#top">aishaani <em>agarwal</em></a>
+  <nav>
+    <a href="#work">work</a>
+    <a href="#experience">experience</a>
+    <a href="#recognition">awards</a>
+    <a href="#about">about</a>
+    <a href="#contact">contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <span class="mono hello">hi, i'm</span>
+  <h1>
+    <span class="row"><span>aishaani</span></span>
+    <span class="row"><span><em>agarwal</em></span></span>
+  </h1>
+  <div class="hero-sub">
+    <p>Incoming <b>computer science</b> freshman at <b>UW–Madison</b>, class of 2030. I build software that touches the real world.</p>
+    <span class="mono">bangalore → madison, wi</span>
+  </div>
+  <span class="mono down">scroll ↓</span>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="track" id="mtrack">
+    <span><i>✦</i>computer vision</span><span><i>✦</i>full-stack</span><span><i>✦</i>embedded systems</span><span><i>✦</i>ai apps</span><span><i>✦</i>codebreaking</span><span><i>✦</i>published research</span><span><i>✦</i>teaching</span>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="shead rv">
+    <h2>tech <em>projects</em></h2>
+    <span class="mono">click a row to expand · 07 builds</span>
+  </div>
+
+  <div class="index">
+
+    <div class="row-p rv">
+      <span class="no">01</span>
+      <div class="titlebox">
+        <div class="chip-logo"><img src="/image/dance.jpg" alt="" onerror="this.remove()"><span class="init">dd</span></div>
+        <h3>dance decoded</h3>
+      </div>
+      <span class="what">ai dance-learning platform</span>
+      <span class="go">open +</span>
+      <div class="more">
+        <div class="role">full-stack developer · july 2025 – present · founder-built</div>
+        <p>I built an AI platform that watches you dance and teaches you to dance better — and shipped it live at dancedecoded.in.</p>
+        <ul>
+          <li>Integrated <b>real-time motion capture</b> using MediaPipe pose estimation, running live in the browser during practice sessions.</li>
+          <li>Designed and implemented a <b>custom motion-analysis algorithm</b> that compares a learner's joint positions against reference choreography and scores precision.</li>
+          <li>Built the full product end-to-end in <b>Django and Python</b> — the CV pipeline, the feedback UI, and deployment.</li>
+        </ul>
+        <div class="stack"><span>django</span><span>python</span><span>mediapipe</span><span>computer vision</span></div>
+      </div>
+    </div>
+
+    <div class="row-p rv">
+      <span class="no">02</span>
+      <div class="titlebox">
+        <div class="chip-logo"><img src="/image/examai.jpg" alt="" onerror="this.remove()"><span class="init">ex</span></div>
+        <h3>examai</h3>
+      </div>
+      <span class="what">generates papers, grades handwriting</span>
+      <a class="go" href="https://github.com/aishaani-agarwal" target="_blank" rel="noopener">code ↗</a>
+      <div class="more">
+        <div class="role">full-stack developer · solo build</div>
+        <p>A full-stack system that generates complete CBSE question papers and then grades scanned handwritten answer sheets — the whole exam cycle, automated.</p>
+        <ul>
+          <li>Engineered a <b>document-processing pipeline</b>: PDF text extraction → Ghostscript image conversion → Claude Vision reading actual handwriting → Puppeteer rendering final reports.</li>
+          <li>Built the <b>REST API backend in Express</b> handling uploads, AI inference, PDF generation, and async client-server flows.</li>
+          <li>Implemented <b>structured prompt engineering</b> and response parsing to turn raw model output into color-coded grading reports.</li>
+          <li>Designed <b>class-level analytics</b> — rankings, averages, and the most frequently missed questions across a whole class.</li>
+        </ul>
+        <div class="stack"><span>node.js</span><span>express</span><span>claude api</span><span>ghostscript</span><span>puppeteer</span></div>
+      </div>
+    </div>
+
+    <div class="row-p rv">
+      <span class="no">03</span>
+      <div class="titlebox">
+        <div class="chip-logo"><img src="/image/sticker.jpg" alt="" onerror="this.remove()"><span class="init">sp</span></div>
+        <h3>sticker physics</h3>
+      </div>
+      <span class="what">webcam objects become physics bodies</span>
+      <a class="go" href="https://github.com/aishaani-agarwal" target="_blank" rel="noopener">code ↗</a>
+      <div class="more">
+        <div class="role">developer · computer vision + simulation</div>
+        <div class="media">
+          <img src="/image/sticker-physics.jpg" alt="Sticker Physics — detected objects as physics bodies" onerror="this.remove()">
+          <video src="/image/sticker-physics-demo.mp4" controls muted playsinline preload="metadata" onerror="this.remove()"></video>
+        </div>
+        <p>Point a camera at colored physical objects and they become live collision bodies inside a 2D physics world — a tangible interface with no controller at all.</p>
+        <ul>
+          <li>Implemented the <b>vision pipeline from scratch</b> in OpenCV.js: HSV color segmentation, contour detection, and oriented bounding-box extraction.</li>
+          <li>Wrote <b>coordinate transformation and smoothing algorithms</b> to kill detection jitter while staying real-time.</li>
+          <li>Integrated <b>Matter.js</b> so rigid bodies spawn and track detected objects' positions and rotations frame-by-frame.</li>
+          <li>Built a runtime <b>control dashboard</b> for live tuning of both CV and physics parameters.</li>
+        </ul>
+        <div class="stack"><span>javascript</span><span>opencv.js</span><span>matter.js</span></div>
+      </div>
+    </div>
+
+    <div class="row-p rv">
+      <span class="no">04</span>
+      <div class="titlebox">
+        <div class="chip-logo"><img src="/image/servo.jpg" alt="" onerror="this.remove()"><span class="init">es</span></div>
+        <h3>clap-controlled servo</h3>
+      </div>
+      <span class="what">esp32 + microphone + your hands</span>
+      <a class="go" href="https://github.com/aishaani-agarwal" target="_blank" rel="noopener">code ↗</a>
+      <div class="more">
+        <div class="role">embedded systems developer · hardware + firmware</div>
+        <p>A WiFi-enabled servo system whose web interface is hosted directly on the ESP32 itself — control it from your phone's browser, or just clap.</p>
+        <ul>
+          <li>Programmed <b>HTTP request handling, PWM motor control, and GPIO management</b> in C++ on the Arduino framework.</li>
+          <li>Added a <b>microphone module</b> for sound-triggered control, so a clap drives the motor alongside browser commands.</li>
+          <li>Built the <b>responsive control page served from the chip</b>, translating taps into low-latency physical movement.</li>
+          <li>Did the unglamorous real part too: <b>firmware flashing, serial debugging, and hardware integration</b>.</li>
+        </ul>
+        <div class="stack"><span>c++</span><span>esp32</span><span>arduino</span><span>pwm</span></div>
+      </div>
+    </div>
+
+    <div class="row-p rv">
+      <span class="no">05</span>
+      <div class="titlebox">
+        <div class="chip-logo"><img src="/image/mediate.jpg" alt="" onerror="this.remove()"><span class="init">ma</span></div>
+        <h3>mediateai</h3>
+      </div>
+      <span class="what">ai conflict mediation, with voice</span>
+      <a class="go" href="https://github.com/aishaani-agarwal" target="_blank" rel="noopener">code ↗</a>
+      <div class="more">
+        <div class="role">full-stack developer · solo build</div>
+        <p>An AI mediation platform where people privately submit disputes or run live, voice-driven mediation sessions with an AI mediator in the middle.</p>
+        <ul>
+          <li>Built a <b>secure client-server architecture</b> in Express keeping API keys server-side while routing AI requests through REST endpoints.</li>
+          <li>Integrated <b>speech recognition and synthesis</b> via the Web Speech API for real-time spoken conversation.</li>
+          <li>Implemented <b>relationship-aware prompting</b> so the mediator's tone adapts — a roommate dispute reads differently than a business one.</li>
+          <li>Designed a <b>multi-screen responsive interface</b> with live conversation workflows and smooth transitions.</li>
+        </ul>
+        <div class="stack"><span>node.js</span><span>express</span><span>claude api</span><span>web speech api</span></div>
+      </div>
+    </div>
+
+    <div class="row-p rv">
+      <span class="no">06</span>
+      <div class="titlebox">
+        <div class="chip-logo"><img src="/image/koala.jpg" alt="" onerror="this.remove()"><span class="init">ko</span></div>
+        <h3>koala id generator</h3>
+      </div>
+      <span class="what">excel → print-ready id cards</span>
+      <a class="go" href="https://github.com/aishaani-agarwal" target="_blank" rel="noopener">code ↗</a>
+      <div class="more">
+        <div class="role">full-stack developer · real client: a preschool</div>
+        <p>A batch system that turns a preschool's Excel records and student photos into print-ready, personalized ID cards — built for an actual school's actual problem.</p>
+        <ul>
+          <li>Built a <b>FastAPI microservice running U²-Net</b> (a deep-learning model) for automatic background removal on uploaded photos.</li>
+          <li>Designed a <b>Canvas-based rendering engine</b> with custom layouts, positioning, transformations, and live preview.</li>
+          <li>Implemented <b>Excel parsing and automated photo-to-record matching</b>, plus ZIP export for whole batches in one click.</li>
+          <li>Deployed the frontend on <b>GitHub Pages</b> and the ML backend on <b>Hugging Face Spaces</b>.</li>
+        </ul>
+        <div class="stack"><span>python</span><span>fastapi</span><span>u²-net</span><span>canvas api</span><span>hugging face</span></div>
+      </div>
+    </div>
+
+    <div class="row-p rv">
+      <span class="no">07</span>
+      <div class="titlebox">
+        <div class="chip-logo"><img src="/image/unbound.jpg" alt="" onerror="this.remove()"><span class="init">un</span></div>
+        <h3>unbound</h3>
+      </div>
+      <span class="what">career guidance for underserved students</span>
+      <span class="go">open +</span>
+      <div class="more">
+        <div class="role">full-stack developer · nov 2023 – present</div>
+        <p>My longest-running project: a career-guidance web app for students who don't have access to counselors, live at unboundonline.in.</p>
+        <ul>
+          <li>Designed and built the entire app in <b>Next.js</b>, from information architecture to UI.</li>
+          <li>Implemented a <b>custom matching algorithm</b> that suggests scholarships, programs, and opportunities to marginalized students.</li>
+          <li>Launched and maintained it publicly — real users, real deployments, real bug reports.</li>
+        </ul>
+        <div class="stack"><span>next.js</span><span>html</span><span>css</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="shead rv">
+    <h2>where i've <em>worked</em></h2>
+    <span class="mono">2023 — now</span>
+  </div>
+  <div class="xp rv">
+    <div class="xp-cell">
+      <div class="top">
+        <span class="mono">may – jul 2026</span>
+        <div class="chip-logo"><img src="/image/kristalball.png" alt="Kristalball" onerror="this.remove()"><span class="init">kb</span></div>
+      </div>
+      <h3>Kristalball</h3>
+      <div class="org">front-end developer · on site</div>
+      <p>Built and deployed ML product-mapping models hitting 89% accuracy. Wrote Python + Apps Script automation that cut pre-onboarding from 2–4 hours to ~25 minutes, and a reporting pipeline that took monthly reports from 4 hours to 45. Shipped production code to GitLab.</p>
+    </div>
+    <div class="xp-cell">
+      <div class="top">
+        <span class="mono">may – jun 2025</span>
+        <div class="chip-logo"><img src="/image/nisarg.png" alt="Nisarg Foundation" onerror="this.remove()"><span class="init">nf</span></div>
+      </div>
+      <h3>Nisarg Foundation</h3>
+      <div class="org">cs education intern · remote</div>
+      <p>Designed a foundational computer-science curriculum for underprivileged children and taught it end to end — adapting every lesson for students with little prior exposure to technology.</p>
+    </div>
+    <div class="xp-cell">
+      <div class="top">
+        <span class="mono">may – jun 2024</span>
+        <div class="chip-logo"><img src="/image/trademo.jpg" alt="Trademo" onerror="this.remove()"><span class="init">tr</span></div>
+      </div>
+      <h3>Trademo</h3>
+      <div class="org">front-end developer · remote</div>
+      <p>Shipped responsive UI in HTML/CSS/JS with the engineering team at a global supply-chain intelligence company. Fixed UI/UX bugs, prototyped new features, and sat in client meetings turning feedback into design changes.</p>
+    </div>
+    <div class="xp-cell">
+      <div class="top">
+        <span class="mono">may 2023 – present</span>
+        <div class="chip-logo"><img src="/image/careforall.png" alt="CareForALL" onerror="this.remove()"><span class="init">ca</span></div>
+      </div>
+      <h3>CareForALL</h3>
+      <div class="org">director, social marketing</div>
+      <p>Rose from volunteer to director. Led campaigns and a video team; organized 15+ medical camps reaching 1000+ people across 7+ NGOs; raised ₹200K; covered in two national newspapers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS & RESEARCH -->
+<section id="recognition">
+  <div class="shead rv">
+    <h2>awards &amp; <em>research</em></h2>
+    <span class="mono">published · won</span>
+  </div>
+  <div class="aw rv">
+    <div class="aw-cell">
+      <span class="mono">published research · gold crest award · 2025</span>
+      <h3>Investigating Awareness and Perception of <em>Bias in AI-Driven Platforms</em></h3>
+      <p>A survey-based study I authored on how young people perceive bias and accountability inside AI systems — who they think is responsible when an algorithm gets it wrong, and how aware they are that it can. Published in the International Journal of Humanities and Social Science, and awarded the Gold Crest Award.</p>
+      <span class="cite">international journal of humanities and social science (ijhss)</span>
+      <a class="paper-link" href="https://www.internationaljournalssrg.org/IJHSS/paper-details?Id=546" target="_blank" rel="noopener">read the paper ↗</a>
+    </div>
+    <div class="aw-cell">
+      <span class="mono">first place · august 2025</span>
+      <h3>Invictus: <em>Code &amp; Capture</em></h3>
+      <p>Won first place in a competitive coding and cryptography event in Bangalore — real-time codebreaking and digital treasure hunts. Cracked challenges with Hashcat and classical ciphers under time pressure, as a team, without panicking (mostly).</p>
+      <span class="cite">bangalore · hashcat · classical ciphers · speed + logic</span>
+      <a class="paper-link lb-open" href="/image/invictus.jpg">view certificate ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="shead rv">
+    <h2>about <em>me</em></h2>
+  </div>
+  <div class="about">
+    <div class="rv">
+      <p class="about-big">I like the moment when something on a screen <em>reaches into the real world</em> — a camera that reads movement, a clap that moves a motor, a model that reads handwriting.</p>
+      <p class="body">Most of my work sits where sensing meets software: computer vision, embedded systems, and AI applications — ideally solving a problem for a real person, whether that's a preschool, a student without a counselor, or a class full of ungraded exams. This fall I'm starting computer science at the University of Wisconsin–Madison.</p>
+      <div class="uw-row">
+        <div class="chip-logo"><img src="/image/uw.png" alt="UW–Madison" onerror="this.remove()"><span class="init">W</span></div>
+        <div class="txt">
+          <b>University of Wisconsin–Madison</b>
+          <span>b.s. computer science · class of 2030</span>
+        </div>
+      </div>
+    </div>
+    <div class="facts rv">
+      <img class="portrait" src="/image/me.jpg" alt="Aishaani Agarwal" onerror="this.remove()">
+      <div class="fact"><span class="k">studying</span><span class="v">Computer Science, UW–Madison <i>· class of 2030</i></span></div>
+      <div class="fact"><span class="k">before</span><span class="v">Harvest International School, Bangalore</span></div>
+      <div class="fact"><span class="k">languages</span><span class="v">Python · Java · JavaScript · C++</span></div>
+      <div class="fact"><span class="k">frameworks</span><span class="v">Next.js · Django · Express · FastAPI</span></div>
+      <div class="fact"><span class="k">ai &amp; vision</span><span class="v">Claude API · OpenCV · MediaPipe · OCR</span></div>
+      <div class="fact"><span class="k">hobbies</span><span class="v">filming &amp; editing · codebreaking · teaching</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="mono rv">contact</span>
+  <h2 class="rv"><a href="mailto:aishaani@gmail.com">aishaani<em>@gmail.com</em></a></h2>
+  <div class="clinks rv">
+    <a href="https://github.com/aishaani-agarwal" target="_blank" rel="noopener">github</a>
+    <a href="https://www.linkedin.com/in/aishaani-agarwal-186abb26a/" target="_blank" rel="noopener">linkedin</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 aishaani agarwal</span>
+  <span>madison, wi</span>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Image preview">
+  <button class="lb-close" id="lbClose">close ✕</button>
+  <img id="lbImg" src="" alt="Preview">
+  <span class="lb-hint">click anywhere or press esc to close</span>
+</div>
+
+<script>
+/* ================= TERMINAL INTRO ================= */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var intro = document.getElementById('intro');
+  var body = document.getElementById('tbody');
+  var skip = document.getElementById('skip');
+  var done = false, ready = false;
+
+  function reveal(){
+    intro.classList.add('away');
+    document.body.classList.remove('locked');
+    document.body.classList.add('entered');
+    setTimeout(function(){ intro.remove(); }, 1000);
+  }
+
+  function enter(){
+    if(done) return; done = true;
+    var burst = [
+      'compiling portfolio…',
+      '✓ projects/ (7 modules)',
+      '✓ experience/ (4 roles)',
+      '✓ research/ (1 published paper)',
+      'build succeeded in 0.4s',
+      'launching →'
+    ];
+    intro.classList.add('compiling');
+    var i = 0;
+    var iv = setInterval(function(){
+      if(i < burst.length){
+        var l = document.createElement('span');
+        l.className = 'ln ghost';
+        l.textContent = '  ' + burst[i++];
+        body.appendChild(l);
+        body.scrollTop = body.scrollHeight;
+      } else { clearInterval(iv); reveal(); }
+    }, 90);
+  }
+
+  if(reduce){
+    intro.remove();
+    document.body.classList.remove('locked');
+    document.body.classList.add('entered');
+    return;
+  }
+
+  var script = [
+    {t:'$ whoami', d:34, pause:250, cls:'ok'},
+    {t:'> loading profile…', d:12, pause:350, cls:'ghost'},
+    {t:'', d:0, pause:80, name:true},
+    {t:'> cs @ uw–madison · class of 2030', d:14, pause:200, cls:'ghost'},
+    {t:'> status: building things', d:14, pause:300, cls:'ghost'}
+  ];
+
+  var li = 0;
+  function typeLine(){
+    if(li >= script.length){
+      ready = true;
+      var p = document.createElement('div');
+      p.className = 'press';
+      p.textContent = 'press any key — or tap — to enter';
+      body.appendChild(p);
+      requestAnimationFrame(function(){ p.classList.add('show'); });
+      return;
+    }
+    var item = script[li++];
+
+    if(item.name){
+      var n = document.createElement('span');
+      n.className = 'name-out';
+      body.appendChild(n);
+      var full = 'aishaani agarwal';
+      var ci = 0;
+      var iv = setInterval(function(){
+        ci++;
+        var typed = full.slice(0, ci);
+        var split = typed.split(' ');
+        n.innerHTML = split[0] + (split[1] !== undefined ? ' <em>' + split[1] + '</em>' : '') + '<span class="caret"></span>';
+        if(ci >= full.length){ clearInterval(iv); setTimeout(typeLine, item.pause); }
+      }, 55);
+      return;
+    }
+
+    var el = document.createElement('span');
+    el.className = 'ln ' + (item.cls || '');
+    body.appendChild(el);
+    var ci = 0;
+    var iv = setInterval(function(){
+      ci++;
+      el.textContent = item.t.slice(0, ci);
+      if(ci >= item.t.length){ clearInterval(iv); setTimeout(typeLine, item.pause); }
+    }, item.d);
+  }
+  setTimeout(typeLine, 400);
+
+  window.addEventListener('keydown', function(){ if(ready) enter(); });
+  intro.addEventListener('click', function(e){ if(e.target === skip) return; if(ready) enter(); });
+  skip.addEventListener('click', function(){ if(!done){ done = true; reveal(); } });
+})();
+
+/* lightbox */
+(function(){
+  var lb=document.getElementById('lightbox'), img=document.getElementById('lbImg');
+  document.querySelectorAll('.lb-open').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      img.src=a.getAttribute('href');
+      lb.classList.add('show');
+    });
+  });
+  function close(){ lb.classList.remove('show'); }
+  lb.addEventListener('click',close);
+  window.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+})();
+
+/* marquee loop */
+var mt=document.getElementById('mtrack');
+mt.innerHTML += mt.innerHTML;
+
+/* expandable work rows */
+document.querySelectorAll('.row-p').forEach(function(row){
+  row.addEventListener('click',function(e){
+    if(e.target.closest('a')) return;
+    row.classList.toggle('open');
+  });
+});
+
+/* reveal on scroll */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+},{threshold:0.15});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+/* cursor */
+(function(){
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var c=document.querySelector('.cur');
+  var x=0,y=0,tx=0,ty=0;
+  window.addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY});
+  (function loop(){x+=(tx-x)*.22;y+=(ty-y)*.22;c.style.left=x+'px';c.style.top=y+'px';requestAnimationFrame(loop)})();
+  document.querySelectorAll('a, .row-p, .skip').forEach(function(el){
+    el.addEventListener('mouseenter',function(){c.classList.add('on')});
+    el.addEventListener('mouseleave',function(){c.classList.remove('on')});
+  });
+})();
+</script>
+</body>
+</html>
