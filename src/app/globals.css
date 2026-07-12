@@ -263,11 +263,10 @@ footer span{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-tr
 
 /* ---- portrait in about ---- */
 .portrait{
-  width:min(220px,60%);border-radius:14px;border:1px solid var(--line-2);
-  filter:grayscale(1) contrast(1.02);transition:filter .4s;
-  margin-bottom:28px;
+  width:min(220px,60%);border-radius:14px;
+  margin:0 auto 28px;
+  display:block;
 }
-.portrait:hover{filter:grayscale(0)}
 
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}

@@ -54,6 +54,26 @@ export default function ProjectRow({
   media,
 }) {
   const [open, setOpen] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const rowRef = useRef(null);
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setRevealed(true);
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   function handleClick(e) {
     if (e.target.closest("a")) return;
@@ -61,7 +81,11 @@ export default function ProjectRow({
   }
 
   return (
-    <div className={`row-p rv${open ? " open" : ""}`} onClick={handleClick}>
+    <div
+      ref={rowRef}
+      className={`row-p rv${revealed ? " in" : ""}${open ? " open" : ""}`}
+      onClick={handleClick}
+    >
       <span className="no">{no}</span>
       <div className="titlebox">
         <ChipLogo src={logo} alt={title} />

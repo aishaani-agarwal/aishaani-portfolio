@@ -200,7 +200,7 @@ const PROJECTS = [
   },
   {
     no: "07",
-    logo: "/image/Unbound.jpg",
+    logo: null,
     title: "unbound",
     what: "career guidance for underserved students",
     link: null,

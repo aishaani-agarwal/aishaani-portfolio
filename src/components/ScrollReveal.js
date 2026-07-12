@@ -16,7 +16,9 @@ export default function ScrollReveal() {
       { threshold: 0.15 }
     );
 
-    document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+    // .row-p (project rows) manage their own reveal state internally, since
+    // they re-render on click and would wipe an imperatively-added class.
+    document.querySelectorAll(".rv:not(.row-p)").forEach((el) => io.observe(el));
 
     return () => io.disconnect();
   }, []);
